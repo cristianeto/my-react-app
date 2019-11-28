@@ -1,11 +1,23 @@
 import React, {Component} from 'react';
 import './App.css';
+import tasks from './sample/tasks.json';
+
+/** Importing components */
+import Tasks from './components/Tasks';
+import TaskForm from './components/TaskForm';
 
 class App extends Component{
+    state={
+        tasks: tasks,
+    }    
+
   render (){
-      return(
-          <h1>Hello world</h1>
-      )
+      return <div>
+                <TaskForm/>
+                <Tasks tasks={this.state.tasks}/>  
+          </div>
+       
+      
   }  
 }
 
