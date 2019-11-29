@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-
-
 class TaskForm extends Component {
     state = {
         title: '',
@@ -9,17 +7,20 @@ class TaskForm extends Component {
     }
 
     miSubmit = (e) => {
-        console.log('Submiting');
+       // console.log('Submiting');
+       //console.log(this.state);
+       //this.props.addTask({title: 'task four', description: 'This is a new description'});
+       this.props.addTask({title: this.state.title, description: this.state.description});
         e.preventDefault();
     }
     miChange = (e) => {
-        console.info(e.target.name +" "+ e.target.value);
+        //console.info(e.target.name, e.target.value);        
         this.setState({
            [ e.target.name]: e.target.value
         })
     }
 
-    render() {
+    render() {                
         return (
             <form onSubmit={this.miSubmit} style={{'border':'1px solid #000', 'padding':'2em'}} >
                 <input onChange={this.miChange} 

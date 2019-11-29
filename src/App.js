@@ -10,11 +10,36 @@ class App extends Component{
     state={
         tasks: tasks,
     }    
+  addTask = (task) =>{
+   const newTask = {
+     title: task.title,
+     description: task.description,
+     id: this.state.tasks.length,
+   }
+    this.setState({
+      tasks: [...this.state.tasks, newTask]
+    })
+  }
 
-  render (){
+  deleteTask = (id) =>{
+    const newTasks = this.state.tasks.filter(task => task.id !==id);
+    this.setState({tasks:newTasks});  
+  }
+
+  checkDone = (id) =>{
+    const newTasks = this.state.tasks.map(task =>{
+      if (task.id === id) {
+          task.done = !task.done
+      }
+      return task
+    })
+    this.setState({tasks: newTasks})
+  }
+
+  render (){    
       return <div>
-                <TaskForm/>
-                <Tasks tasks={this.state.tasks}/>  
+                <TaskForm addTask={this.addTask}/>
+                <Tasks tasks={this.state.tasks} deleteTask={this.deleteTask} checkDone={this.checkDone}/>  
           </div>
        
       
