@@ -18,7 +18,7 @@ export default class Posts extends Component {
                 <h1>Posts</h1>
                 <ul className="posts">
                     {   this.state.posts.map((post) =>{
-                        return <li className="posts_item">
+                        return <li key={post.id} className="posts_item">
                             <h3>{post.title}</h3>
                             <div>{post.title}</div>
                             </li>
