@@ -6,6 +6,7 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
 import Tasks from './components/Tasks';
 import TaskForm from './components/TaskForm';
 import Posts from './components/Posts';
+import Dependency from './components/Dependency';
 class App extends Component{
     state={
         tasks: tasks,
@@ -41,7 +42,8 @@ class App extends Component{
               <Router>
                 
                 <Link to="/">Home</Link> <br/>
-                <Link to="/posts">Posts</Link>
+                <Link to="/posts">Posts</Link><br/>
+                <Link to="/dependencies">Dependencies</Link>
                 <Route exact  path="/" render={()=>{
                     return <div>
                         <TaskForm addTask={this.addTask}/>
@@ -54,6 +56,7 @@ class App extends Component{
                   }}>                  
                   </Route>
                   <Route path="/posts" component={Posts}/>
+                  <Route path="/dependencies" component={Dependency}/>
               </Router>
           </div>
        
